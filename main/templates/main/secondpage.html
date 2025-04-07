@@ -1,0 +1,6 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div>secondpage 입니다.</div>
+<a class="next" href="{% url 'mainpage' %}">
+  <img src="{% static 'images/arrow.png' %}" alt="arrow" width="200px" />
+</a>
+{% endblock %}

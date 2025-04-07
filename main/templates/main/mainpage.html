@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<section class="content">
+  <div class="devInfo">
+    <ol>
+      <li>가상환경 켜는 거 항상 기억하기 ( pipenv shell )</li>
+      <li>폴더위치 정확하게 확인하기</li>
+    </ol>
+  </div>
+
+  <div class="reviewContent">
+    <li>
+      project는 사이트 전체를 의미(프로젝트는 여러 앱으로 구성됨/ ex.
+      인스타그램)
+    </li>
+    <li>
+      app은 프로젝트를 구성하는 기능의 집합 단위(ex. 회원정보, 게시글, DM 등)
+      Django MTV - Model(Data), Template(인터페이스), View(함수)
+    </li>
+    <li>
+      .gitignore를 왜 사용하나?<br />-> db와 media 같은 git에서 충돌날 수 있는
+      파일들이 충돌나지 않도록 해줌
+    </li>
+  </div>
+
+  <div class="process">
+    <h2>template(html, view, url)</h2>
+    <br />
+    <ol>
+      <li>
+        main 앱 안에 templates 폴더 생성<br />
+        templates 폴더 안에 앱 이름과 동일한 폴더(main)생성<br />
+        templates 폴더 안에 html 파일 생성<br /><br />
+      </li>
+      <li>
+        html과 view 연결(view 작성): 원하는 url을 통해 mainpage가 보여지게 해야
+        함. View.py를 통해 mainpage가 렌더링될 수 있도록 작성함.
+        <br /><br />
+        def mainpage(request):<br />
+        &emsp;&emsp;return render(request, 'main/mainpage.html')<br />
+        <br />
+      </li>
+      <li>
+        html과 view 연결(url 작성): urls.py에 해당하는 데이터 연결<br /><br />
+        from main import views<br />
+        urlpatterns = [<br />
+        &emsp;&emsp;path('', views.mainpage, name='mainpage'), <br />
+        ]<br /><br />
+      </li>
+      <li>
+        이제 localhost:8000/main/으로 들어가면 mainpage.html이 보여짐<br /><br />
+      </li>
+      <li>html에서 css 적용</li>
+    </ol>
+  </div>
+  <a class="next" href="{% url 'secondpage' %}">
+    <img src="{% static 'images/arrow.png' %}" alt="arrow" width="200px" />
+  </a>
+</section>
+
+{% endblock %}
